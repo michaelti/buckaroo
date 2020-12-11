@@ -6,13 +6,17 @@ exports.up = function (knex) {
             .unsigned()
             .notNullable()
             .references("id")
-            .inTable("transactions");
+            .inTable("transactions")
+            .onUpdate("CASCADE")
+            .onDelete("CASCADE");
         table
             .integer("category_id")
             .unsigned()
             .notNullable()
             .references("id")
-            .inTable("categories");
+            .inTable("categories")
+            .onUpdate("CASCADE")
+            .onDelete("CASCADE");
         table.integer("amount").notNullable().defaultTo(0);
     });
 };

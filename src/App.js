@@ -1,5 +1,5 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Navigation from "./components/Navigation";
+import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
 import "./App.scss";
 
@@ -7,7 +7,7 @@ function App() {
     return (
         <div className="app">
             <BrowserRouter>
-                <Navigation />
+                <Header />
                 <Switch>
                     <Route path="/" exact>
                         <Dashboard />

@@ -1,0 +1,43 @@
+@use '../styles/colors';
+
+$padding: 1.5rem;
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: $padding;
+    padding: $padding;
+    background-color: colors.$light-neutral;
+
+    &__title {
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    &__menu {
+        &--secondary {
+            margin-top: auto;
+        }
+    }
+
+    &__menu-item {
+        display: block;
+        margin: 0 (-$padding);
+        padding: 0.75rem $padding;
+        text-decoration: none;
+        color: inherit;
+
+        &.active {
+            background-color: white;
+            box-shadow: -8px 4px 8px rgba(0, 0, 0, 0.05);
+            color: colors.$dark-blue;
+            font-weight: bold;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: colors.$dark-blue;
+        }
+    }
+}

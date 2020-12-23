@@ -1,0 +1,10 @@
+$padding: 1.5rem;
+
+.main {
+    padding: $padding;
+
+    &__title {
+        margin: 0;
+        font-size: 2rem;
+    }
+}

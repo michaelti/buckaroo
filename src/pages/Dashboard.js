@@ -1,5 +1,6 @@
 import "./Dashboard.scss";
 import MonthlySummary from "../components/MonthlySummary";
+import Categories from "../components/Categories";
 import Card from "../components/Card";
 
 function Dashboard() {
@@ -24,13 +25,7 @@ function Dashboard() {
             </div>
 
             <div className="dashboard__right">
-                <Card>
-                    <h2>🗂 Categories</h2>
-                    <Card>Food</Card>
-                    <Card>Personal</Card>
-                    <Card>Business</Card>
-                    <Card>+ New Category</Card>
-                </Card>
+                <Categories />
             </div>
         </main>
     );

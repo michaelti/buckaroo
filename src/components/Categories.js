@@ -1,14 +1,14 @@
 import "./Categories.scss";
-import Card from "./Card";
 import CategoryCard from "./CategoryCard";
 
 function Categories({ categories }) {
     return (
-        <Card className="categories">
+        <div className="categories">
             <h2 className="categories__title">🗂 Categories</h2>
             <div className="categories__list">
                 {categories.map((category) => (
                     <CategoryCard
+                        key={category.id}
                         title={category.title}
                         amount={category.amount}
                         color={category.color}
@@ -16,7 +16,7 @@ function Categories({ categories }) {
                 ))}
                 <CategoryCard title="+ New category" isPlaceholder />
             </div>
-        </Card>
+        </div>
     );
 }
 

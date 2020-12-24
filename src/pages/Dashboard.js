@@ -5,7 +5,7 @@ import Card from "../components/Card";
 
 function Dashboard() {
     return (
-        <main class="main dashboard">
+        <main className="main dashboard">
             <div className="dashboard__left">
                 <h1 className="main__title">👋 Welcome back, User</h1>
                 <span>
@@ -14,7 +14,7 @@ function Dashboard() {
 
                 <MonthlySummary totalIncome={975} totalExpense={125} />
 
-                <div class="dashboard__cards">
+                <div className="dashboard__cards">
                     <Card>
                         <h2>💰 New Transaction</h2>
                     </Card>
@@ -25,13 +25,15 @@ function Dashboard() {
             </div>
 
             <div className="dashboard__right">
-                <Categories
-                    categories={[
-                        { title: "Food", amount: 490, color: "green" },
-                        { title: "Food", amount: 450, color: "pink" },
-                        { title: "Food", amount: 35, color: "blue" },
-                    ]}
-                />
+                <Card>
+                    <Categories
+                        categories={[
+                            { id: 1, title: "Food", amount: 490, color: "green" },
+                            { id: 2, title: "Food", amount: 450, color: "pink" },
+                            { id: 3, title: "Food", amount: 35, color: "blue" },
+                        ]}
+                    />
+                </Card>
             </div>
         </main>
     );

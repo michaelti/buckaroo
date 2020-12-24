@@ -2,6 +2,7 @@ import "./Dashboard.scss";
 import MonthlySummary from "../components/MonthlySummary";
 import Categories from "../components/Categories";
 import Card from "../components/Card";
+import LatestTransactions from "../components/LatestTransactions";
 
 function Dashboard() {
     return (
@@ -19,7 +20,13 @@ function Dashboard() {
                         <h2>💰 New Transaction</h2>
                     </Card>
                     <Card>
-                        <h2>🗒 Latest Transactions</h2>
+                        <LatestTransactions
+                            transactions={[
+                                { id: 1, date: "2020-12-26", name: "Burrito Boyz", total: -15 },
+                                { id: 2, date: "2020-12-25", name: "Pay: Visa", total: -25 },
+                                { id: 3, date: "2020-12-24", name: "Deposit", total: 100 },
+                            ]}
+                        />
                     </Card>
                 </div>
             </div>

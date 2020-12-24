@@ -1,6 +1,6 @@
 import "./CategoryCard.scss";
 
-function Category({ title, amount, color }) {
+function Category({ title, amount, color, isPlaceholder }) {
     const currency = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
@@ -10,9 +10,11 @@ function Category({ title, amount, color }) {
         <div className={`category-card ${color ? `category-card--${color}` : ""}`}>
             <div>
                 <h3 className="category-card__title">{title}</h3>
-                {amount && <span className="category-card__amount">{currency.format(amount)}</span>}
+                {!isPlaceholder && (
+                    <span className="category-card__amount">{currency.format(amount)}</span>
+                )}
             </div>
-            <div className="category-card__button">&rarr;</div>
+            {!isPlaceholder && <div className="category-card__button">&rarr;</div>}
         </div>
     );
 }

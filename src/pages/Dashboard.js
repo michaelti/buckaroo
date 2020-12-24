@@ -25,7 +25,13 @@ function Dashboard() {
             </div>
 
             <div className="dashboard__right">
-                <Categories />
+                <Categories
+                    categories={[
+                        { title: "Food", amount: 490, color: "green" },
+                        { title: "Food", amount: 450, color: "pink" },
+                        { title: "Food", amount: 35, color: "blue" },
+                    ]}
+                />
             </div>
         </main>
     );

@@ -3,6 +3,7 @@ import MonthlySummary from "../components/MonthlySummary";
 import Categories from "../components/Categories";
 import Card from "../components/Card";
 import LatestTransactions from "../components/LatestTransactions";
+import NewTransactionForm from "../components/NewTransactionForm";
 
 function Dashboard() {
     return (
@@ -17,7 +18,7 @@ function Dashboard() {
 
                 <div className="dashboard__cards">
                     <Card>
-                        <h2>💰 New Transaction</h2>
+                        <NewTransactionForm />
                     </Card>
                     <Card>
                         <LatestTransactions

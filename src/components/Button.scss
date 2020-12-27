@@ -1,0 +1,17 @@
+@use '../styles/colors';
+
+.button {
+    font: inherit;
+    border: none;
+    background-color: colors.$light-neutral;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.15s;
+    cursor: pointer;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: colors.$light-orange;
+    }
+}

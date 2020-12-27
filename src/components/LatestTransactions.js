@@ -13,7 +13,7 @@ function LatestTransactions({ transactions }) {
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Name</th>
+                        <th>Details</th>
                         <th>Total</th>
                     </tr>
                 </thead>

@@ -1,4 +1,5 @@
 import "./LatestTransactions.scss";
+import Button from "./Button";
 
 function LatestTransactions({ transactions }) {
     const currency = new Intl.NumberFormat("en-US", {
@@ -29,6 +30,11 @@ function LatestTransactions({ transactions }) {
                     ))}
                 </tbody>
             </table>
+            <div className="latest-transactions__see-all">
+                <Button isLink to="/transactions">
+                    See all transactions
+                </Button>
+            </div>
         </div>
     );
 }

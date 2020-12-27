@@ -2,10 +2,12 @@
 
 .button {
     font: inherit;
+    color: inherit;
     border: none;
     background-color: colors.$light-neutral;
     padding: 0.5rem 1.5rem;
     border-radius: 0.5rem;
+    text-decoration: none;
     transition: background-color 0.15s;
     cursor: pointer;
 

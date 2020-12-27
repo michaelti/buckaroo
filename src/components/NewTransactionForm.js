@@ -104,7 +104,6 @@ function NewTransactionForm() {
                         onBlur={formatAmount}
                     />
                 </label>
-
                 <div className="new-tx__item new-tx__item--submit">
                     <span>
                         Total <strong>${getTotal()}</strong>

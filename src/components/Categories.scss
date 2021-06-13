@@ -1,0 +1,12 @@
+.categories {
+    &__title {
+        margin-top: 0;
+        white-space: nowrap;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

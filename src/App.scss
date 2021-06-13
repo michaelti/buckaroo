@@ -1,0 +1,10 @@
+@use './styles/responsive';
+
+.app {
+    min-height: 100vh;
+
+    @include responsive.tablet {
+        display: grid;
+        grid-template-columns: auto 1fr;
+    }
+}

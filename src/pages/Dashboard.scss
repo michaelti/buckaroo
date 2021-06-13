@@ -1,0 +1,40 @@
+@use '../styles/responsive';
+
+$padding: 1.5rem;
+
+.main {
+    padding: $padding;
+
+    &__title {
+        margin: 0;
+        font-size: 2rem;
+    }
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include responsive.tablet {
+        flex-direction: row;
+    }
+
+    &__left {
+        flex-grow: 1;
+    }
+
+    &__right {
+        flex-basis: 25%;
+    }
+
+    &__cards {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+
+        > * {
+            flex-grow: 1;
+        }
+    }
+}

@@ -8,7 +8,7 @@ const Transaction = bookshelf.model("Transaction", {
         return this.belongsTo("Account");
     },
     categories() {
-        return this.belongsToMany("Category", "transactions_categories");
+        return this.belongsToMany("Category", "transactions_categories").withPivot(["amount"]);
     },
 });
 

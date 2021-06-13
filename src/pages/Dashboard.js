@@ -4,8 +4,27 @@ import Categories from "../components/Categories";
 import Card from "../components/Card";
 import LatestTransactions from "../components/LatestTransactions";
 import NewTransactionForm from "../components/NewTransactionForm";
+import axios from "axios";
+import { compareDesc } from "date-fns";
+import { useState, useEffect } from "react";
 
 function Dashboard() {
+    const [transactions, setTransactions] = useState([]);
+
+    const fetchTransactions = () => {
+        axios.get(process.env.REACT_APP_BACKEND_URL + "/transactions").then((response) => {
+            const sortedData = response.data.sort((a, b) => {
+                const byDate = compareDesc(new Date(a.date), new Date(b.date));
+                const byId = b.id - a.id;
+                return byDate || byId;
+            });
+
+            setTransactions(sortedData.slice(0, 5));
+        });
+    };
+
+    useEffect(fetchTransactions, []);
+
     return (
         <main className="main dashboard">
             <div className="dashboard__left">
@@ -18,16 +37,10 @@ function Dashboard() {
 
                 <div className="dashboard__cards">
                     <Card>
-                        <NewTransactionForm />
+                        <NewTransactionForm fetchTransactions={fetchTransactions} />
                     </Card>
                     <Card>
-                        <LatestTransactions
-                            transactions={[
-                                { id: 1, date: "2020-12-26", name: "Burrito Boyz", total: -15 },
-                                { id: 2, date: "2020-12-25", name: "Pay: Visa", total: -25 },
-                                { id: 3, date: "2020-12-24", name: "Deposit", total: 100 },
-                            ]}
-                        />
+                        <LatestTransactions transactions={transactions} />
                     </Card>
                 </div>
             </div>

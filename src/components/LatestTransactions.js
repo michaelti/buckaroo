@@ -24,7 +24,7 @@ function LatestTransactions({ transactions }) {
                             <td>{transaction.date}</td>
                             <td>{transaction.name}</td>
                             <td>
-                                <strong>{currency.format(transaction.total)}</strong>
+                                <strong>{currency.format(transaction.total / 100)}</strong>
                             </td>
                         </tr>
                     ))}

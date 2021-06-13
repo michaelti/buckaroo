@@ -1,13 +1,27 @@
 import "./NewTransactionForm.scss";
 import Button from "./Button";
 import { useState } from "react";
+import { formatISO } from "date-fns";
+import axios from "axios";
 
-function NewTransactionForm() {
-    const [infoValues, setInfoValues] = useState({
-        date: new Date().toISOString().split("T")[0],
-    });
+function NewTransactionForm({ fetchTransactions }) {
+    const initialState = {
+        infoValues: {
+            date: formatISO(new Date(), { representation: "date" }),
+            details: "",
+        },
+        amountValues: {},
+    };
 
-    const [amountValues, setAmountValues] = useState({});
+    const [infoValues, setInfoValues] = useState(initialState.infoValues);
+    const [amountValues, setAmountValues] = useState(initialState.amountValues);
+
+    // Temp
+    const [categories] = useState([
+        { id: 1, name: "Food" },
+        { id: 2, name: "Personal" },
+        { id: 3, name: "Business" },
+    ]);
 
     const handleChangeInfo = (e) => {
         const { name, value } = e.target;
@@ -38,6 +52,22 @@ function NewTransactionForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const preparedAmounts = Object.entries(amountValues).map(([key, value]) => ({
+            category_id: key,
+            amount: value * 100,
+        }));
+
+        axios
+            .post(process.env.REACT_APP_BACKEND_URL + "/transactions", {
+                ...infoValues,
+                categories: preparedAmounts,
+            })
+            .then(() => {
+                setInfoValues(initialState.infoValues);
+                setAmountValues(initialState.amountValues);
+                fetchTransactions();
+            });
     };
 
     return (
@@ -65,45 +95,21 @@ function NewTransactionForm() {
                         value={infoValues.details}
                     />
                 </label>
-                <label className="new-tx__item">
-                    <span>Food</span>
-                    <input
-                        type="number"
-                        step="0.01"
-                        className="new-tx__input new-tx__input--amount"
-                        placeholder="0.00"
-                        name="amount_food"
-                        onChange={handleChangeAmount}
-                        value={amountValues.amount_food}
-                        onBlur={formatAmount}
-                    />
-                </label>
-                <label className="new-tx__item">
-                    <span>Personal</span>
-                    <input
-                        type="number"
-                        step="0.01"
-                        className="new-tx__input new-tx__input--amount"
-                        placeholder="0.00"
-                        name="amount_personal"
-                        onChange={handleChangeAmount}
-                        value={amountValues.amount_personal}
-                        onBlur={formatAmount}
-                    />
-                </label>
-                <label className="new-tx__item">
-                    <span>Business</span>
-                    <input
-                        type="number"
-                        step="0.01"
-                        className="new-tx__input new-tx__input--amount"
-                        placeholder="0.00"
-                        name="amount_business"
-                        onChange={handleChangeAmount}
-                        value={amountValues.amount_business}
-                        onBlur={formatAmount}
-                    />
-                </label>
+                {categories.map((category) => (
+                    <label className="new-tx__item" key={category.id}>
+                        <span>{category.name}</span>
+                        <input
+                            type="number"
+                            step="0.01"
+                            className="new-tx__input new-tx__input--amount"
+                            placeholder="0.00"
+                            name={category.id}
+                            onChange={handleChangeAmount}
+                            value={amountValues[category.id] || ""}
+                            onBlur={formatAmount}
+                        />
+                    </label>
+                ))}
                 <div className="new-tx__item new-tx__item--submit">
                     <span>
                         Total <strong>${getTotal()}</strong>

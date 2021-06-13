@@ -1,0 +1,26 @@
+{
+    "name": "buckaroo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "concurrently 'npm:frontend' 'npm:backend'",
+        "postinstall": "(cd frontend && npm install); (cd backend && npm install)",
+        "frontend": "npm start --prefix frontend",
+        "backend": "npm start --prefix backend"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/michaelti/buckaroo.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/michaelti/buckaroo/issues"
+    },
+    "homepage": "https://github.com/michaelti/buckaroo#readme",
+    "devDependencies": {
+        "concurrently": "^6.2.0"
+    }
+}

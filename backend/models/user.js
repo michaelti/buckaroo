@@ -1,14 +1,18 @@
 const bookshelf = require("../bookshelf");
 require("./account");
 require("./category");
+require("./transaction");
 
 const User = bookshelf.model("User", {
     tableName: "users",
     accounts() {
         return this.hasMany("Account");
     },
-    category() {
+    categories() {
         return this.hasMany("Category");
+    },
+    transactions() {
+        return this.hasMany("Transaction").through("Account");
     },
 });
 

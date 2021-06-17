@@ -1,8 +1,11 @@
 const router = require("express").Router();
 const Transaction = require("../models/transaction");
+const User = require("../models/user");
 
-router.get("/", async (_req, res) => {
-    const transactions = await Transaction.fetchAll({ withRelated: "categories" });
+router.get("/", async (req, res) => {
+    const transactions = await new User({ id: req.decoded.id })
+        .transactions()
+        .fetch({ withRelated: "categories" });
 
     formattedTransactions = transactions.map((transaction) => ({
         id: transaction.get("id"),

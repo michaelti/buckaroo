@@ -1,6 +1,7 @@
 const bookshelf = require("../bookshelf");
 require("./account");
 require("./category");
+require("./user");
 
 const Transaction = bookshelf.model("Transaction", {
     tableName: "transactions",
@@ -9,6 +10,9 @@ const Transaction = bookshelf.model("Transaction", {
     },
     categories() {
         return this.belongsToMany("Category", "transactions_categories").withPivot(["amount"]);
+    },
+    user() {
+        return this.belongsTo("User").through("Account");
     },
 });
 

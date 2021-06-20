@@ -59,10 +59,18 @@ function NewTransactionForm({ fetchTransactions }) {
         }));
 
         axios
-            .post(process.env.REACT_APP_BACKEND_URL + "/transactions", {
-                ...infoValues,
-                categories: preparedAmounts,
-            })
+            .post(
+                process.env.REACT_APP_BACKEND_URL + "/transactions",
+                {
+                    ...infoValues,
+                    categories: preparedAmounts,
+                },
+                {
+                    headers: {
+                        authorization: `Bearer ${sessionStorage.getItem("token")}`,
+                    },
+                }
+            )
             .then(() => {
                 setInfoValues(initialState.infoValues);
                 setAmountValues(initialState.amountValues);

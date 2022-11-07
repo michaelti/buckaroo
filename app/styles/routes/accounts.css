@@ -1,0 +1,46 @@
+.transaction,
+.new-transaction {
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+    border-radius: 0.5rem;
+}
+
+@media (min-width: 50rem) {
+    .transaction,
+    .new-transaction {
+        grid-template-columns: minmax(0, 1fr) repeat(4, minmax(0, 2fr));
+    }
+}
+
+.new-transaction input {
+    padding: 0.5rem 1rem;
+}
+
+.transaction__amount {
+    font-family: monospace;
+}
+
+.transaction:nth-child(even) {
+    background-color: var(--light-neutral);
+}
+
+.account-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--mid-neutral);
+    padding: 2rem 0;
+    gap: 1rem;
+}
+
+.account-navigation__link {
+    text-decoration: none;
+    color: var(--dark-blue);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.account-navigation__link.active {
+    background-color: var(--dark-blue);
+    color: var(--light-neutral);
+}

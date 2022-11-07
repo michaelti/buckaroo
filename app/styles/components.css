@@ -1,0 +1,68 @@
+/* All shared component styles */
+
+/* Sidebar */
+.Sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background-color: var(--light-neutral);
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.05) inset;
+}
+
+.Sidebar__title {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.Sidebar__menu--secondary {
+    margin-top: auto;
+}
+
+.Sidebar__menu-item {
+    display: block;
+    margin: 0 -1.5rem;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+.Sidebar__menu-item.active {
+    background-color: white;
+    box-shadow: -8px 4px 8px rgba(0, 0, 0, 0.05);
+    color: var(--dark-blue);
+    font-weight: bold;
+}
+
+.Sidebar__menu-item:hover,
+.Sidebar__menu-item:active,
+.Sidebar__menu-item:focus {
+    color: var(--dark-blue);
+}
+
+/* Logo */
+.Logo {
+    display: block;
+    width: fit-content;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.Logo::after {
+    content: "";
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    border-left: 0.25rem solid var(--light-orange);
+    border-bottom: 0.25rem solid var(--light-orange);
+    border-bottom-left-radius: 0.125rem;
+    position: absolute;
+    bottom: -0.375rem;
+    left: -0.625rem;
+    animation: border-grow 1s;
+}
